@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { View, Text, ScrollView, StyleSheet, SafeAreaView } from "react-native";
+import React, { Component, useState } from "react";
+import { View, Text, ScrollView, StyleSheet, SafeAreaView, AsyncStorage, Button } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Avatar, Divider, TouchableHighlight } from "../../components";
 import { Theme } from "../../theme";
@@ -9,6 +9,31 @@ type TProps = {};
 
 export const ProfileScreen: React.FC<TProps> = props => {
   const { getString } = useLocalization();
+
+  // const userInfo = await AsyncStorage.getItemSync('user');
+  // const value = JSON.parse(userInfo);
+  // const name = value.name;
+  const [userInfo, setUserInfo] = useState(null);
+  AsyncStorage.getItem('user').then(data => {
+    console.log("userInfo")
+    console.log(userInfo)
+
+    if (!userInfo) {
+      setUserInfo(JSON.parse(data))
+      console.log(userInfo.email)
+    }
+    console.log(userInfo)
+  }).catch(error => {
+    console.log(error)
+  })
+
+  const _onChangePressed = async() => {
+
+
+
+  };
+
+
   return (
     <SafeAreaView style={styles.flex1}>
       <ScrollView
@@ -17,18 +42,15 @@ export const ProfileScreen: React.FC<TProps> = props => {
       >
         <Avatar
           imageStyle={styles.imageStyle}
-          source={{
-            uri:
-              "https://raw.githubusercontent.com/publsoft/publsoft.github.io/master/projects/dentist-demo/assets/images/profile_photo.png"
-          }}
+          source={require('../../../assets/userProfile.png')}
         />
-        <Text style={styles.nameText}>Büşra Mutlu</Text>
-        <Text style={styles.daysText}>13. days</Text>
-
+        <Text style={styles.nameText}>{userInfo ? userInfo.name : 'User'}</Text>
+        <Text style={styles.nameText}>{userInfo ? userInfo.email : 'Email'}</Text>
+        <Button title="Edit" onPress={_onChangePressed} />
         <View style={{ marginTop: 24 }}>
           {[
             {
-              title: getString("My Status"),
+              title: getString("My Information"),
               subtitle: "13. days",
               iconName: "ios-egg",
               iconColor: Theme.colors.primaryColor
@@ -59,7 +81,7 @@ export const ProfileScreen: React.FC<TProps> = props => {
             }
           ].map((item, index) => {
             return (
-              <TouchableHighlight key={index} onPress={() => {}}>
+              <TouchableHighlight key={index} onPress={() => { }}>
                 <View>
                   <View style={styles.menuRowContent}>
                     <View style={styles.iconContent}>
