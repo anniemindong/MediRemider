@@ -5,6 +5,9 @@ import { Theme } from "../theme";
 import NavigationNames from "./NavigationNames";
 import { useLocalization } from "../localization";
 import { stackScreenOptions, tabScreenOptions } from "./NavigationHelper";
+import { combineReducers, createStore } from "redux";
+import { Provider } from "react-redux";
+
 import {
   HomeScreen,
   ProfileScreen,
@@ -19,7 +22,7 @@ import {
   NewAppointmentScreen,
   DoctorListScreen,
   DoctorDetailScreen,
-  EventListScreen
+  EventListScreen,
 } from "../screens";
 import { ToolbarBrandLogo } from "../components";
 
@@ -71,25 +74,48 @@ const HomeTabStack = () => {
   );
 };
 
+const store = createStore(
+  combineReducers({
+    events: (state = [], action) => {
+      switch (action.type) {
+        case "LOAD_EVENTS":
+          return action.data ?? [];
+        case "ADD_EVENT":
+          state.push(action.data);
+          return state;
+        case "DELETE_EVENT":
+          const idx = state.findIndex((event) => event === action.data);
+          if (idx >= 0) state.splice(idx, 1);
+          action.data.alerted = true;
+          return [...state];
+        default:
+          return state;
+      }
+    },
+  })
+);
+
 const CalendarTabStack = () => {
   const { getString } = useLocalization();
   return (
-    <Stack.Navigator headerMode="screen" screenOptions={stackScreenOptions}>
-      <Stack.Screen
-        name={NavigationNames.CalendarScreen}
-        component={CalendarScreen}
-        options={{ title: getString("Calendar") }}
-      />
-      <Stack.Screen
-        name={NavigationNames.NewAppointmentScreen}
-        component={NewAppointmentScreen}
-        options={{ title: getString("New Appointment") }}
-      />
-      <Stack.Screen
-        name={NavigationNames.DoctorDetailScreen}
-        component={DoctorDetailScreen}
-      />
-    </Stack.Navigator>
+    <Provider store={store}>
+      <Stack.Navigator headerMode="screen" screenOptions={stackScreenOptions}>
+        <Stack.Screen
+          name={NavigationNames.CalendarScreen}
+          component={CalendarScreen}
+          options={{ title: getString("Calendar") }}
+        />
+        <Stack.Screen
+          name={NavigationNames.NewAppointmentScreen}
+          component={NewAppointmentScreen}
+          options={{ title: getString("New Appointment") }}
+        />
+        <Stack.Screen
+          name={NavigationNames.DoctorDetailScreen}
+          component={DoctorDetailScreen}
+        />
+      </Stack.Navigator>
+    </Provider>
   );
 };
 
@@ -146,7 +172,7 @@ const HomePageTabNavigator = () => (
     screenOptions={tabScreenOptions}
     tabBarOptions={{
       activeTintColor: Theme.colors.primaryColor,
-      inactiveTintColor: Theme.colors.gray
+      inactiveTintColor: Theme.colors.gray,
     }}
   >
     <Tab.Screen name={NavigationNames.HomeTab} component={HomeTabStack} />

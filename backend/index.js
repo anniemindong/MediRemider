@@ -14,11 +14,13 @@ app.get('/', (req, res) => {
 
 app.get('/user/profile', verifyToken, (req, res) => {
     console.log(req.user)
-    res.send({success:true, data:req.user});
+    res.send({ success: true, data: req.user });
 })
 
 app.use('/user', authRoutes);
-    mongoose.connect('mongodb+srv://king_auth:7KckJMsEXKqhV8u@cluster0.f7nsr.mongodb.net/mediReminder?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+app.use('/event', require('./routes/takeMedinceTime'))
+
+mongoose.connect('mongodb+srv://king_auth:7KckJMsEXKqhV8u@cluster0.f7nsr.mongodb.net/mediReminder?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         app.listen(3000, () => console.log('Server is running'));
     })
