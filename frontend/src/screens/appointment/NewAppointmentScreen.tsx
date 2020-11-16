@@ -123,7 +123,7 @@ export const NewAppointmentScreen: React.FC<TProps> = props => {
         disabledDateNumberStyle={{ color: "grey" }}
       />
       <Divider style={{ marginTop: 12 }} />
-      <Text style={styles.sectionTitle}>{getString("Available Doctors")}</Text>
+      {/* <Text style={styles.sectionTitle}>{getString("Available Doctors")}</Text>
       <FlatList
         data={doctorsList}
         style={{ marginTop: 8 }}
@@ -141,7 +141,7 @@ export const NewAppointmentScreen: React.FC<TProps> = props => {
           />
         )}
         ItemSeparatorComponent={() => <Divider />}
-      />
+      /> */}
       <ConfirmAppointmentModal
         isVisible={appointmentModal.isVisible}
         item={appointmentModal.item}

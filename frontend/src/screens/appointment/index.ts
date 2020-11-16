@@ -1,1 +1,3 @@
-export * from "./NewAppointmentScreen";
+// export * from "./NewAppointmentScreen";
+
+export * from './NewEvent';
