@@ -19,3 +19,12 @@ exports.login = async function (email, password) {
      
     return result.data
 }
+
+//heartRate
+exports.HeartRate = async function (email) {
+  const result = await axios.post(`${BASE_URL}/user/HeartRate`, {
+      email
+    })
+   
+  return result.data
+}

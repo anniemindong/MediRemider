@@ -17,8 +17,8 @@ type Props = {
 const api = require('../../../utils/api')
 
 const LoginScreen = ({ navigation }: Props) => {
-  const [email, setEmail] = useState({ value: '', error: '' });
-  const [password, setPassword] = useState({ value: '', error: '' });
+  const [email, setEmail] = useState({ value: 'demo@gmail.com', error: '' });
+  const [password, setPassword] = useState({ value: '123456', error: '' });
 
   const _onLoginPressed = async() => {
     const emailError = emailValidator(email.value);
@@ -35,7 +35,7 @@ const LoginScreen = ({ navigation }: Props) => {
 
     try {
       const result =  await api.login(email.value, password.value)
-      console.log(result)
+      // console.log(result)
       
 
       if (result.success) {
@@ -45,7 +45,7 @@ const LoginScreen = ({ navigation }: Props) => {
         const obj2 = JSON.stringify(result.user);
        await AsyncStorage.setItem('user',obj2);
   
-       console.log(obj2)
+      //  console.log(obj2)
 
        const obj22 = JSON.parse(obj2);
       //  console.log("---------")
@@ -62,8 +62,6 @@ const LoginScreen = ({ navigation }: Props) => {
     }
     catch (error) {
       console.log(error)
-      Alert.alert('Invalid Email or Password')
-
     }
     //end 1
   };
