@@ -100,7 +100,7 @@ const MediaTabStack = () => {
       <Stack.Screen
         name={NavigationNames.MediaScreen}
         component={MediaScreen}
-        options={{ title: getString("Media") }}
+        options={{ title: getString("Medicine") }}
       />
       <Stack.Screen
         name={NavigationNames.MediaDetailScreen}

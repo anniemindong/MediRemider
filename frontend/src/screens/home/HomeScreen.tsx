@@ -159,13 +159,21 @@ export const HomeScreen: React.FC<TProps> = props => {
               datasets: [
                 {
                   data: [
-                    heartData.user.monday,
-                    heartData.user.tuesday,
-                    heartData.user.wednesday,
-                    heartData.user.thursday,
-                    heartData.user.friday,
-                    heartData.user.saturday,
-                    heartData.user.sunday
+                    80,
+                    70,
+                    90,
+                    80,
+                    90,
+                    80,
+                    80
+
+                    // heartData.user.monday,
+                    // heartData.user.tuesday,
+                    // heartData.user.wednesday,
+                    // heartData.user.thursday,
+                    // heartData.user.friday,
+                    // heartData.user.saturday,
+                    // heartData.user.sunday
                   ]
                 }
               ]
