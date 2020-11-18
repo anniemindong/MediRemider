@@ -7,7 +7,7 @@ import { useLocalization } from "../localization";
 import { stackScreenOptions, tabScreenOptions } from "./NavigationHelper";
 import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
-
+// import * as Notifications from "expo-notifications";
 import {
   HomeScreen,
   ProfileScreen,
@@ -94,6 +94,41 @@ const store = createStore(
     },
   })
 );
+
+// Notifications.setNotificationHandler({
+//   handleNotification: async () => ({
+//     shouldShowAlert: true,
+//     shouldPlaySound: true,
+//     shouldSetBadge: true,
+//   }),
+// });
+
+// export function sendNotification(content) {
+//   Notifications.scheduleNotificationAsync({
+//     content: {
+//       title: content.title ?? "No Title",
+//       body: content.body ?? "",
+//     },
+//     trigger: null,
+//   });
+// }
+
+// setInterval(() => {
+//   const root = store.getState();
+//   const events = root.events ?? [];
+//   console.log("Check Events");
+//   events.forEach((event) => {
+//     // console.log(event)
+//     if (event.alerted !== true && event.date <= Date.now()) {
+//       event.alerted = true;
+//       console.log(event);
+//       sendNotification({
+//         title: event.title,
+//         body: event.desc,
+//       });
+//     }
+//   });
+// }, 30000);
 
 const CalendarTabStack = () => {
   const { getString } = useLocalization();
