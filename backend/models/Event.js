@@ -13,6 +13,10 @@ const eventSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    notified: {
+        type: Boolean,
+        default: false
+    },
     desc: {
         type: String,
         required: false

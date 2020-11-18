@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
-  Button,
   StyleSheet,
   TouchableOpacity,
   ScrollView,
@@ -10,6 +9,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { deleteEvent, getEvents } from "../../../utils/api.event";
 import { NavigationNames } from "../../navigations";
+import { Theme } from "../../theme";
+import { FabButton, Button } from "../../components/buttons";
 
 export const CalendarScreen = ({ navigation }) => {
   const [loaded, setLoaded] = useState(false);
@@ -63,34 +64,18 @@ export const CalendarScreen = ({ navigation }) => {
           justifyContent: "center",
         }}
       >
-        <Text
-          style={{
-            fontSize: 16,
-            color: "#222",
-            textAlign: "center",
-          }}
-        >
-          Event list is empty
-        </Text>
-        <TouchableOpacity
-          style={{
-            backgroundColor: "rgb(0,90,200)",
-            padding: 12,
-            borderRadius: 8,
-          }}
-          onPress={() => {
-            navigation.navigate(NavigationNames.NewAppointmentScreen);
-          }}
-        >
-          <Text
-            style={{
-              color: "#eee",
-              fontWeight: "bold",
-            }}
-          >
-            Create a new event
-          </Text>
-        </TouchableOpacity>
+        <View style={styless.emptyDataContainer}>
+          <Text style={styless.emptyDataTitle}>{"Event list is empty"}</Text>
+          <View style={styless.emptyDataButtonContainer}>
+            <Button
+              title={"New Event"}
+              type="outline"
+              onPress={() => {
+                navigation.navigate(NavigationNames.NewAppointmentScreen);
+              }}
+            />
+          </View>
+        </View>
       </View>
     );
 
@@ -101,6 +86,7 @@ export const CalendarScreen = ({ navigation }) => {
           fontSize: 14,
           color: "darkgray",
           textAlign: "center",
+          marginTop: 12,
         }}
       >
         Upcoming
@@ -134,7 +120,7 @@ export const CalendarScreen = ({ navigation }) => {
           <Text style={{ color: "red" }}>Dismiss</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ width: "100%", alignItems: "center" }}>
+      <View style={{ width: "100%", alignItems: "center", paddingTop: 12 }}>
         <Text style={styles.description}>Up coming events</Text>
       </View>
       <ScrollView
@@ -232,5 +218,50 @@ const styles = StyleSheet.create({
     marginVertical: 30,
     height: 1,
     width: "80%",
+  },
+});
+
+const styless = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scrollContainer: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: Theme.colors.formBackground,
+  },
+  infoText: {
+    fontSize: 22,
+    fontWeight: "600",
+    paddingBottom: 12,
+    marginTop: 8,
+  },
+  calendarItem: {
+    backgroundColor: "white",
+    marginStart: 8,
+    marginEnd: 8,
+    shadowRadius: 2,
+    shadowColor: "gray",
+    shadowOpacity: 0.1,
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
+  },
+  emptyDataContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  emptyDataTitle: {
+    color: Theme.colors.black,
+    marginTop: 8,
+    paddingHorizontal: 40,
+    fontSize: 15,
+    textAlign: "center",
+    fontWeight: "100",
+  },
+  emptyDataButtonContainer: {
+    marginTop: 24,
   },
 });

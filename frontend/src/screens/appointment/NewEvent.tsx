@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { View } from "react-native-animatable";
-import { TextInput, TouchableOpacity, Text, Button } from "react-native";
+import { TextInput, StyleSheet, Text, Button, Dimensions } from "react-native";
 import { useDispatch } from "react-redux";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { getEvents, postEvent } from "../../../utils/api.event";
 import { NavigationNames } from "../../navigations";
+import { Theme } from "../../theme";
 
 export function NewAppointmentScreen({ navigation }) {
   const [title, setTitle] = useState("New Event");
@@ -111,3 +112,4 @@ export function NewAppointmentScreen({ navigation }) {
     </View>
   );
 }
+

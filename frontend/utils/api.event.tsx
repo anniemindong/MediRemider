@@ -15,6 +15,12 @@ export const postEvent = async function (event: any) {
   return result.data;
 };
 
+export const modifyEvent = async function (event: any) {
+  const user = (await AsyncStorage.getItem("user")) ?? "{}";
+  const result = await axios.put(`${BASE_URL}/event/${event._id}`, event);
+  return result.data;
+};
+
 export const deleteEvent = async function (event: any) {
   const user = (await AsyncStorage.getItem("user")) ?? "{}";
   const result = await axios.delete(`${BASE_URL}/event/${event._id}`, event);
