@@ -6,7 +6,7 @@ import { AirbnbRating } from "react-native-ratings";
 import { Theme } from "../../theme";
 
 type TProps = {
-  item: ReviewModel;
+  item: any;
   style?: ViewStyle;
 };
 
