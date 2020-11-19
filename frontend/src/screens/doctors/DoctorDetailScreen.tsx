@@ -17,16 +17,47 @@ import { Theme } from "../../theme";
 import { AirbnbRating } from "react-native-ratings";
 import { DoctorReviewItemRow } from "../../components/reviews";
 import { Ionicons } from "@expo/vector-icons";
+const api = require('../../../utils/api');
 
 type TProps = {};
 
 export const DoctorDetailScreen: React.FC<TProps> = props => {
+  console.log('props["route"]["params"]["storeInfo"]')
+  console.log(props["route"]["params"]["storeInfo"])
+  const model = props["route"]["params"]["storeInfo"]
+
+  //get the medicine info
+  const [mediInfo, setMediInfo] = useState(null);
+  api.getMedicine(model.fullName).then(data => {
+    data = data.map(item => {
+      return {
+        user: {
+          fullName: item.name,
+          imageUrl:
+            "https://img.icons8.com/officel/344/pill.png",
+          about: "user about"
+        },
+        rating: 5,
+        comment: item.description
+      }
+    })
+
+    console.log("===========medicine")
+    console.log(data)
+    if (!mediInfo) {
+      setMediInfo(data)
+    }
+    // console.log(mediInfo)
+  })
+
+
+
   const route = useRoute();
   const navigation = useNavigation();
 
   const [toolbarTitleHided, setToolbarTitleHided] = useState(true);
 
-  const model = JSON.parse(route.params["model"]) as DoctorModel;
+  // const model = JSON.parse(route.params["model"]) as DoctorModel;
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const y = event.nativeEvent.contentOffset.y;
@@ -104,7 +135,7 @@ export const DoctorDetailScreen: React.FC<TProps> = props => {
         <Text style={styles.sectionTitle}>Reviews</Text>
         <Divider />
         <FlatList
-          data={model.reviews}
+          data={mediInfo}
           keyExtractor={(item, index) => `key${index}ForReview`}
           ItemSeparatorComponent={() => <Divider style={styles.divider} />}
           renderItem={row => <DoctorReviewItemRow item={row.item} />}

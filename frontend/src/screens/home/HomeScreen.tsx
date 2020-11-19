@@ -77,9 +77,6 @@ export const HomeScreen: React.FC<TProps> = props => {
     }
     const email = JSON.parse(data).email;
 
-    console.log("eeeeeeeee")
-    console.log(email)
-
     return api.HeartRate(email)
   }).then(data => {
 
@@ -87,11 +84,11 @@ export const HomeScreen: React.FC<TProps> = props => {
       if (!heartData) {
         setHeartData(data)
       }
-      console.log("777777")
-      console.log(data)
+      // console.log("777777")
+      // console.log(data)
       if (data.success) {
-        console.log("6666666666666")
-        console.log(data.user)
+        // console.log("6666666666666")
+        // console.log(data.user)
       } 
     }
   }).catch(error => {

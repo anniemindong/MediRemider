@@ -8,6 +8,10 @@ const UserDetails = require('../models/UserDetails');
 //HeartRate
 const HeartRate = require('../models/HeartRate');
 
+const Medicine = require('../models/Medicine');
+
+const Store = require('../models/Store');
+
 
 //token
 const generateToken = user => {
@@ -79,7 +83,7 @@ router.post('/login', async (req, res) => {
     // check if password is correct
     const validPassword = await bcrypt.compare(req.body.password, user.password)
     if (!validPassword) return res.status(405).send({ success: false, message: "Invalid Email or Password" })
-
+    console.log(user)
     // create and assign a token
     const token = generateToken(user);
     res.header('auth-token', token).send({ success: true, message: 'Logged in successfully', token, user })
@@ -87,31 +91,31 @@ router.post('/login', async (req, res) => {
 
 // heartRate chart
 router.post('/HeartRate', async (req, res) => {
-    // const obj = new HeartRate({
-    //     email: "demo@gmail.com",
-    //     monday: "85",
-    //     tuesday:"80",
-    //     wednesday:"87",
-    //     thursday:"88",
-    //     friday:"86",
-    //     saturday:"88",
-    //     sunday:"90"
-    // })   
-    // await obj.save();
-
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
     }
-    console.log("-0000000-")
-    console.log(req.body.email)
+    // console.log("-0000000-")
+    // console.log(req.body.email)
     // check if email exist
     const user = await HeartRate.findOne({ email: req.body.email })
     if (!user) return res.status(404).send({ success: false, message: "User is not registered" })
-    console.log(user)
+    // console.log(user)
     res.status(200).send({ success: true, user })
 })
 
+router.get('/medicine', async (req, res) => {
+    const store = req.query.store
+    console.log("store")
+    console.log(store)
+    const medi = await Medicine.find({store})
+    res.status(200).send(medi)
+})
+
+router.get('/store', async (req, res) => {
+    const store = await Store.find({ })
+    res.status(200).send({ store })
+})
 
 module.exports = router;

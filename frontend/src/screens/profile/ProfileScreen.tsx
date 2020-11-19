@@ -16,14 +16,9 @@ export const ProfileScreen: React.FC<TProps> = props => {
   // const name = value.name;
   const [userInfo, setUserInfo] = useState(null);
   AsyncStorage.getItem('user').then(data => {
-    console.log("userInfo")
-    console.log(userInfo)
-
     if (!userInfo) {
       setUserInfo(JSON.parse(data))
-      console.log(userInfo.email)
     }
-    console.log(userInfo)
   }).catch(error => {
     console.log(error)
   })
@@ -58,31 +53,31 @@ export const ProfileScreen: React.FC<TProps> = props => {
           {[
             {
               title: getString("My Address"),
-              subtitle: <Text>{userInfo.address ? userInfo.address : 'Address'}</Text>,
+              subtitle: <Text>{userInfo ? userInfo.address : 'Address'}</Text>,
               iconName: "ios-egg",
               iconColor: Theme.colors.primaryColor
             },
             {
               title: getString("Email"),
-              subtitle: <Text>{userInfo.email ? userInfo.email : 'email'}</Text>,
+              subtitle: <Text>{userInfo ? userInfo.email : 'email'}</Text>,
               iconName: "ios-heart",
               iconColor: "#EB5757"
             },
             {
               title: getString("Data of Birth"),
-              subtitle: <Text>{userInfo.dob ? userInfo.dob : 'dob'}</Text>,
+              subtitle: <Text>{userInfo ? userInfo.dob : 'dob'}</Text>,
               iconName: "md-calendar",
               iconColor: "#2D9CDB"
             },
             {
               title: getString("Medicine"),
-              subtitle: <Text>{userInfo.medicine ? userInfo.medicine : 'unknow'}</Text>,
+              subtitle: <Text>{userInfo? userInfo.medicine : 'unknow'}</Text>,
               iconName: "ios-medkit",
               iconColor: "#27AE60"
             },
             {
               title: getString("Emergency Contact"),
-              subtitle: <Text>{userInfo.emergency ? userInfo.emergency : 'unknow'}</Text>,
+              subtitle: <Text>{userInfo ? userInfo.emergency : 'unknow'}</Text>,
               iconName: "md-notifications",
               iconColor: "#F2994A"
             }
