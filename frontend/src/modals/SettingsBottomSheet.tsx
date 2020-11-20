@@ -68,9 +68,9 @@ export const SettingsBottomSheet: React.FC<TProps> = props => {
                 onPress={() => changeLanguage("en")}
               />
               <LangButton
-                title="TR"
-                isSelected={currentLanguage() === "tr"}
-                onPress={() => changeLanguage("tr")}
+                title="CN"
+                isSelected={currentLanguage() === "ch"}
+                onPress={() => changeLanguage("ch")}
               />
             </View>
           </View>

@@ -3,7 +3,8 @@ import i18n from "i18next";
 import { initReactI18next, useTranslation } from "react-i18next";
 import moment from "moment";
 import i18next from "i18next";
-require("moment/locale/tr.js");
+//  require("moment/locale/tr.js");
+ require("moment/locale/zh-cn.js");
 
 const I18N_NAME_SPACE = "translation";
 
@@ -20,7 +21,8 @@ i18n.use(initReactI18next).init({
 moment.locale("en");
 
 i18n.addResources("en", I18N_NAME_SPACE, require("./locales/en.json"));
-i18n.addResources("tr", I18N_NAME_SPACE, require("./locales/tr.json"));
+ //i18n.addResources("tr", I18N_NAME_SPACE, require("./locales/tr.json"));
+ i18n.addResources("ch", I18N_NAME_SPACE, require("./locales/ch.json"));
 
 export const useLocalization = () => {
   const { t, i18n } = useTranslation();

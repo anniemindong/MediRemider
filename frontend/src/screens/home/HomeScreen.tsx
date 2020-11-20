@@ -75,7 +75,10 @@ export const HomeScreen: React.FC<TProps> = props => {
     if (!userInfo) {
       setUserInfo(JSON.parse(data))
     }
-    const email = JSON.parse(data).email;
+    const email = userInfo.email;
+
+    console.log("eeeeeeeee")
+    console.log(email)
 
     return api.HeartRate(email)
   }).then(data => {
@@ -84,11 +87,9 @@ export const HomeScreen: React.FC<TProps> = props => {
       if (!heartData) {
         setHeartData(data)
       }
-      // console.log("777777")
-      // console.log(data)
-      if (data.success) {
-        // console.log("6666666666666")
-        // console.log(data.user)
+      if (heartData.success) {
+        console.log("6666666666666")
+        console.log(heartData.user)
       } 
     }
   }).catch(error => {
@@ -97,7 +98,6 @@ export const HomeScreen: React.FC<TProps> = props => {
   })
 
   // all heart rate data in heartData.user
-        // console.log(heartData.user)
 
 
   const navigation = useNavigation();
@@ -138,73 +138,98 @@ export const HomeScreen: React.FC<TProps> = props => {
   //end 1
   //};
 
-  // return ( <Text >Testttttttt</Text>)
   return (
     <ScrollView
       contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}
     >
-      <Text >{userInfo ? userInfo.email : 'Testttttttt User'}</Text>
+      {/* <Text >{userInfo ? userInfo.email : 'Testttttttt User'}</Text> */}
       <View>
-        <View style={styles.titleStyle}>
-          <Text >Average Heart Rate Line Chart</Text>
-          <Text>Heart Rate Units: beats per minute (BPM)</Text>
+        
+        <Text style={styles.titleStyle}>Average Heart Rate(BPM)</Text>
+      
 
-          <LineChart
-            data={{
-              labels: ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
-              datasets: [
-                {
-                  data: [
-                    80,
-                    70,
-                    90,
-                    80,
-                    90,
-                    80,
-                    80
-
-                    // heartData.user.monday,
-                    // heartData.user.tuesday,
-                    // heartData.user.wednesday,
-                    // heartData.user.thursday,
-                    // heartData.user.friday,
-                    // heartData.user.saturday,
-                    // heartData.user.sunday
-                  ]
-                }
-              ]
-            }}
-            width={Dimensions.get("window").width} // from react-native
-            height={220}
-            yAxisLabel=""
-            yAxisSuffix=""
-            yAxisInterval={1} // optional, defaults to 1
-            chartConfig={{
-              backgroundColor: "#e26a00",
-              backgroundGradientFrom: "#fb8c00",
-              backgroundGradientTo: "#ffa726",
-              decimalPlaces: 2, // optional, defaults to 2dp
-              color: (opacity = 1) => `rgba(0, 0, 192, ${opacity})`,
-              labelColor: (opacity = 1) => `rgba(0, 0, 192, ${opacity})`,
-              style: {
-                borderRadius: 16
-              },
-              propsForDots: {
-                r: "6",
-                strokeWidth: "2",
-                stroke: "#ffa726"
+        <LineChart
+          data={{
+            labels: ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"],
+            datasets: [
+              {
+                data: [
+                  heartData.user.monday,
+                  heartData.user.tuesday,
+                  heartData.user.wednesday,
+                  heartData.user.thursday,
+                  heartData.user.friday,
+                  heartData.user.saturday,
+                  heartData.user.sunday
+                ]
               }
-            }}
-            bezier
-            style={{
-              marginVertical: 8,
+            ]
+          }}
+          width={Dimensions.get("window").width} // from react-native
+          height={220}
+          yAxisLabel=""
+          yAxisSuffix=""
+          yAxisInterval={1} // optional, defaults to 1
+          chartConfig={{
+            backgroundColor: "#FFFFFF",
+            //#e26a00",
+            backgroundGradientFrom: "#FFFFFF",
+            //#fb8c00",
+            backgroundGradientTo: "#81BAB2",
+           // #ffa726",
+            decimalPlaces: 2, // optional, defaults to 2dp
+            color: (opacity = 1) => `rgba(0, 89, 89, ${opacity})`,
+            labelColor: (opacity = 1) => `rgba(0, 89, 89, ${opacity})`,
+            style: {
               borderRadius: 16
-            }}
-          />
+            },
+            propsForDots: {
+              r: "6",
+              strokeWidth: "2",
+              // stroke: "#ffa726"
+            }
+          }}
+          bezier
+          style={{
+            marginVertical: 8,
+            borderRadius: 16
+          }}
+        />
+<Text style={styles.titleStyle}>Today's Average Blood Pressure(mmHg)</Text>
+     
+     
+     <StackedBarChart
+        data={{
+          labels: ["SYS", "DIA"],
+          legend: [],
+          data: [
+           [132],
+           [84]          
+          ],
+          barColors: ['#339966', '#47bacc'],
+          // #dfe4ea'
+        }}
+        width={Dimensions.get('window').width - 0}
+        height={220}
+        chartConfig={{
+          backgroundColor: '#FFFFFF',
+          backgroundGradientFrom: '#FFFFFF',
+          backgroundGradientTo: '#81BAB2',
+          decimalPlaces: 2,
+          color: (opacity = 1) => `rgba(0, 89, 89, ${opacity})`,
+          style: {
+            borderRadius: 20,
+          },
+        }}
+        style={{
+          marginVertical: 8,
+          borderRadius: 13,
+        }}
+        hideLegend
+      />
 
-
-        </View>
+      
 
 
 
@@ -308,7 +333,13 @@ export const HomeScreen: React.FC<TProps> = props => {
 };
 
 const styles = StyleSheet.create({
-  titleStyle: { alignItems: "center" },
+  titleStyle: { 
+    textAlign:"center",
+     color:"#076349",
+     fontFamily:"Cochin",
+     fontSize:18,
+     fontWeight: "bold"
+},
   container: { paddingVertical: 24 },
   upcomingAppoinmentRow: {
     marginHorizontal: 16

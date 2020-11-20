@@ -64,7 +64,7 @@ export const ProfileScreen: React.FC<TProps> = props => {
               iconColor: "#EB5757"
             },
             {
-              title: getString("Data of Birth"),
+              title: getString("Date of Birth"),
               subtitle: <Text>{userInfo ? userInfo.dob : 'dob'}</Text>,
               iconName: "md-calendar",
               iconColor: "#2D9CDB"
