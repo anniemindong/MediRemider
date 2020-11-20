@@ -326,62 +326,73 @@ const departmentImages: ImageModel[] = [
 
 export const departmentList: DepartmentModel[] = [
   {
-    title: "Cardiology",
+    title: "Vicks Cold & Flu Relief",
     imageUrl:
-      "https://github.com/publsoft/publsoft.github.io/raw/master/projects/medical-demo/assets/images/department1.jpg",
+      "https://i.loli.net/2020/11/18/Z7SOAy8CVdh6MD1.jpg",
+    // "https://i.loli.net/2020/11/18/LnupSGRzJAQKBE8.jpg",
+    // "https://github.com/publsoft/publsoft.github.io/raw/master/projects/medical-demo/assets/images/department1.jpg",
     htmlContent:
-      "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p> <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>",
+      "<p>Vicks DayQuil SEVERE Cold & Flu provides max-strength, non-drowsy, daytime relief for your worst cold and flu symptoms. DayQuil SEVERE relieves headache, fever, sore throat, minor aches & pains, nasal congestion, sinus pressure, and cough. Contains acetaminophen.</p><p>Vicks NyQuil Cold & Flu delivers powerful nighttime relief for your worst cold and flu symptoms so that you can get the rest you need. Fight symptoms such as cough, headache, fever, sore throat, minor aches and pains, sneezing, runny nose. Contains acetaminophen.</p>",
     shortDescription:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    departmentServices,
+      "Buy 2, get 1 FREE",
+    // departmentServices,
     newsPosts,
     images: departmentImages
   },
   {
-    title: "Neurology",
+    // title: "Pepto",
+    title: "Pepto Digestive Relief",
     imageUrl:
-      "https://github.com/publsoft/publsoft.github.io/raw/master/projects/medical-demo/assets/images/department2.jpg",
+      "https://i.loli.net/2020/11/18/NteYKsmAul9Jpi2.jpg",
+    // "https://i.loli.net/2020/11/18/rXl3A2x7wCKWeGu.jpg",
+    // "https://github.com/publsoft/publsoft.github.io/raw/master/projects/medical-demo/assets/images/department2.jpg",
     htmlContent:
-      "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p> <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>",
+      "<p>Pepto Bismol Ultra Original Flavor. When you have a sour stomach, Pepto's formula coats your stomach and provides fast relief from nausea, heartburn, indigestion, upset stomach, and diarrhea. Pepto Bismol ULTRA has got you covered. Order online today or find it in the Immediate Heartburn Relief section.</p>",
     shortDescription:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    departmentServices,
+      "25% OFF",
+    // departmentServices,
     newsPosts,
     images: departmentImages
   },
   {
-    title: "Surgery",
+    title: "Motrin Fever Reducer",
     imageUrl:
-      "https://github.com/publsoft/publsoft.github.io/raw/master/projects/medical-demo/assets/images/department3.jpg",
+      "https://i.loli.net/2020/11/18/xhsWOrq5Y3bLoca.jpg",
+    // "https://i.loli.net/2020/11/18/dfQ6cRmDkAj31h4.jpg",
+    // "https://github.com/publsoft/publsoft.github.io/raw/master/projects/medical-demo/assets/images/department3.jpg",
     htmlContent:
-      "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p> <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>",
+      "<p>Get relief from minor aches and pains with Motrin IB 200mg ibuprofen tablets. Safe and effective when used as directed, these ibuprofen tablets temporarily reduce fever and relieve minor aches and pains due to the common cold and flu, headache, muscular aches, minor pain of arthritis, toothache, backache, and menstrual cramps. Each Motrin IB tablet contains 200 milligrams of ibuprofen.</p>",
     shortDescription:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    departmentServices,
+      "$2 OFF",
+    // departmentServices,
     newsPosts,
     images: departmentImages
   },
   {
-    title: "Dental",
+    title: "Neosporin Infection Protection",
     imageUrl:
-      "https://github.com/publsoft/publsoft.github.io/raw/master/projects/medical-demo/assets/images/department4.jpg",
+      "https://i.loli.net/2020/11/18/PVyuzQjw2IvOZMh.jpg",
+    // "https://i.loli.net/2020/11/18/uzs9EA53lNabOFV.jpg",
+    // "https://github.com/publsoft/publsoft.github.io/raw/master/projects/medical-demo/assets/images/department4.jpg",
     htmlContent:
-      "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p> <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>",
+      "<p>Neosporin + Pain Relief Dual Action Ointment provides 24-hour infection protection and helps soothe painful minor cuts, scrapes, and burns. Formulated for first aid wound care, the antibiotic ointment contains bacitracin zinc, neomycin sulfate and polymyxin B sulfate to help fight infection for 24 hours. The first aid ointment is also formulated with pramoxine hydrochloride to help soothe and reduce pain from minor wounds for maximum-strength relief. From the #1 doctor-recommended brand, this antibiotic and pain relief ointment provides soothing infection protection without any sting. To treat minor wounds, simply apply a small amount of the topical skin ointment on the affected area one to three times daily and cover with a Band-Aid Brand Adhesive Bandage.</p>",
     shortDescription:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    departmentServices,
+      "15% OFF",
+    // departmentServices,
     newsPosts,
     images: departmentImages
   },
   {
-    title: "Radiology",
+    title: "Airborne Immune Support ",
     imageUrl:
-      "https://github.com/publsoft/publsoft.github.io/raw/master/projects/medical-demo/assets/images/department5.jpg",
+      "https://i.loli.net/2020/11/18/Lp63NoMXiDIlS8n.jpg",
+    // "https://i.loli.net/2020/11/18/rkblGXozp6tmfKW.jpg",
+    // "https://github.com/publsoft/publsoft.github.io/raw/master/projects/medical-demo/assets/images/department5.jpg",
     htmlContent:
-      "<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p> <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>",
+      "<p>Airborne Effervescent Tablets provide immune support in a great-tasting formula*. Each serving (1 tablet) delivers a blast of 1000 mg of Vitamin C plus 13 vitamins, minerals, and herbs, including Echinacea and ginger. Adults and Children 14 years and older, simply drop 1 tablet in a glass of water or favorite beverage, let dissolve (about 1 minute) and drink. Can repeat every 3-4 hours, up to 3 times per day. Children 12-13 years old, repeat every 3-4 hours as necessary, up to 2 times per day; no more than 2 tablets. Gluten Free. Visit AirborneHealth website to learn more. *These Statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease.</p>",
     shortDescription:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    departmentServices,
+      "Spend $50 Save $15",
+    // departmentServices,
     newsPosts,
     images: departmentImages
   }

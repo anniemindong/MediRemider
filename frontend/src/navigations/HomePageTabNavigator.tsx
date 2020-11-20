@@ -52,7 +52,8 @@ const HomeTabStack = () => {
       <Stack.Screen
         name={NavigationNames.DepartmentListScreen}
         component={DepartmentListScreen}
-        options={{ title: getString("Our Departments") }}
+       // options={{ title: getString("Our Departments") }}
+        options={{ title: getString("Medicine Savings") }}
       />
       <Stack.Screen
         name={NavigationNames.DepartmentDetailScreen}

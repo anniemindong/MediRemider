@@ -229,6 +229,7 @@ export const HomeScreen: React.FC<TProps> = props => {
         hideLegend
       />
 
+
       
 
 
@@ -277,7 +278,7 @@ export const HomeScreen: React.FC<TProps> = props => {
         contentContainerStyle={styles.campaignsContainer}
         keyExtractor={(item, index) => `key${index}ForCampaign`}
       /> */}
-      <SectionHeader
+      {/* <SectionHeader
         title={getString("All Specialists")}
         rightTitle={getString("See More")}
         rightAction={() =>
@@ -304,6 +305,35 @@ export const HomeScreen: React.FC<TProps> = props => {
       />
       <SectionHeader
         title={getString("Our Departments")}
+        rightTitle={getString("See More")}
+        rightAction={() =>
+          navigation.navigate(NavigationNames.DepartmentListScreen)
+        }
+      />
+      <FlatList
+        data={dashboardItem.departments}
+        renderItem={row => (
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate(NavigationNames.DepartmentDetailScreen, {
+                model: JSON.stringify(row.item)
+              })
+            }
+          >
+            <DepartmentItem item={row.item} style={{ minWidth: 130 }} />
+          </TouchableOpacity>
+        )}
+        showsHorizontalScrollIndicator={false}
+        horizontal={true}
+        ItemSeparatorComponent={() => <View style={styles.horizontalDivider} />}
+        keyExtractor={(item, index) => `key${index}ForDepartment`}
+        contentContainerStyle={styles.departmentsContainer}
+      />
+    </ScrollView>
+  );
+}; */}
+<SectionHeader
+        title={getString("Medicine Savings")}
         rightTitle={getString("See More")}
         rightAction={() =>
           navigation.navigate(NavigationNames.DepartmentListScreen)

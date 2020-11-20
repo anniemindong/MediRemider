@@ -44,6 +44,7 @@ export const DepartmentDetailScreen: React.FC<TProps> = props => {
   return (
     <>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        {/* <Image source={require('../../../assets/medicines/Vicks.jpeg')} style={styles.headerImage} /> */}
         <Image source={{ uri: model.imageUrl }} style={styles.headerImage} />
         <View style={styles.content}>
           <Text style={styles.titleText}>{model.title}</Text>
@@ -55,7 +56,7 @@ export const DepartmentDetailScreen: React.FC<TProps> = props => {
             />
           </View>
         </View>
-        <Divider />
+        {/* <Divider />
         <View style={styles.content}>
           <Text style={styles.sectionTitleText}>
             {getString("Department Services")}
@@ -128,7 +129,7 @@ export const DepartmentDetailScreen: React.FC<TProps> = props => {
               })}
             </View>
           </ScrollView>
-        </View>
+        </View> */}
       </ScrollView>
       <PhotoViewerModal
         items={model.images}
@@ -160,8 +161,8 @@ const styles = StyleSheet.create({
     color: Theme.colors.black
   },
   shortDescText: {
-    fontWeight: "600",
-    color: Theme.colors.black,
+    fontWeight: "900",
+    color: "red",
     marginTop: 12
   },
   htmlContent: { marginTop: 8 },
