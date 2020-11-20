@@ -14,7 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { DoctorDetailsBottomSheet } from "../../modals";
 
 type TProps = {
-  item: DoctorModel;
+  item: any;
   style?: ViewStyle;
 };
 

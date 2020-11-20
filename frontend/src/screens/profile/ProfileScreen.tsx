@@ -8,6 +8,7 @@ import { useLocalization } from "../../localization";
 type TProps = {};
 
 export const ProfileScreen: React.FC<TProps> = props => {
+
   const { getString } = useLocalization();
 
   // const userInfo = await AsyncStorage.getItemSync('user');
@@ -15,23 +16,24 @@ export const ProfileScreen: React.FC<TProps> = props => {
   // const name = value.name;
   const [userInfo, setUserInfo] = useState(null);
   AsyncStorage.getItem('user').then(data => {
-    console.log("userInfo")
-    console.log(userInfo)
-
     if (!userInfo) {
       setUserInfo(JSON.parse(data))
-      console.log(userInfo.email)
     }
-    console.log(userInfo)
   }).catch(error => {
     console.log(error)
   })
 
-  const _onChangePressed = async() => {
+  // const [name, setName] = useState({ value: '', error: '' });
+  // const [email, setEmail] = useState({ value: '', error: '' });
+  // const [dob, setDob] = useState({ value: '', error: '' });
+  // const [Medicine, setMedicine] = useState({ value: '', error: '' });
+  // const [emergencyContact, setEmergencyContact] = useState({ value: '', error: '' });
+
+  // const _onChangePressed = async() => {
 
 
 
-  };
+  // };
 
 
   return (
@@ -45,39 +47,39 @@ export const ProfileScreen: React.FC<TProps> = props => {
           source={require('../../../assets/userProfile.png')}
         />
         <Text style={styles.nameText}>{userInfo ? userInfo.name : 'User'}</Text>
-        <Text style={styles.nameText}>{userInfo ? userInfo.email : 'Email'}</Text>
-        <Button title="Edit" onPress={_onChangePressed} />
+        {/* <Text style={styles.nameText}>{userInfo ? userInfo.email : 'Email'}</Text> */}
+        {/* <Button title="Edit" onPress={_onChangePressed} /> */}
         <View style={{ marginTop: 24 }}>
           {[
             {
-              title: getString("My Information"),
-              subtitle: "13. days",
+              title: getString("My Address"),
+              subtitle: <Text>{userInfo ? userInfo.address : 'Address'}</Text>,
               iconName: "ios-egg",
               iconColor: Theme.colors.primaryColor
             },
             {
-              title: getString("Calendar"),
-              subtitle: getString("Appointments"),
+              title: getString("Email"),
+              subtitle: <Text>{userInfo ? userInfo.email : 'email'}</Text>,
+              iconName: "ios-heart",
+              iconColor: "#EB5757"
+            },
+            {
+              title: getString("Data of Birth"),
+              subtitle: <Text>{userInfo ? userInfo.dob : 'dob'}</Text>,
               iconName: "md-calendar",
               iconColor: "#2D9CDB"
             },
             {
-              title: getString("Medical"),
-              subtitle: getString("Programs"),
+              title: getString("Medicine"),
+              subtitle: <Text>{userInfo? userInfo.medicine : 'unknow'}</Text>,
               iconName: "ios-medkit",
               iconColor: "#27AE60"
             },
             {
-              title: getString("Notifications"),
-              subtitle: getString("Show All Notifications"),
+              title: getString("Emergency Contact"),
+              subtitle: <Text>{userInfo ? userInfo.emergency : 'unknow'}</Text>,
               iconName: "md-notifications",
               iconColor: "#F2994A"
-            },
-            {
-              title: getString("Favorite Videos"),
-              subtitle: getString("Saved Videos"),
-              iconName: "ios-heart",
-              iconColor: "#EB5757"
             }
           ].map((item, index) => {
             return (

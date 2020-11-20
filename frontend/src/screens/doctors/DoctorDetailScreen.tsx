@@ -17,16 +17,47 @@ import { Theme } from "../../theme";
 import { AirbnbRating } from "react-native-ratings";
 import { DoctorReviewItemRow } from "../../components/reviews";
 import { Ionicons } from "@expo/vector-icons";
+const api = require('../../../utils/api');
 
 type TProps = {};
 
 export const DoctorDetailScreen: React.FC<TProps> = props => {
+  console.log('props["route"]["params"]["storeInfo"]')
+  console.log(props["route"]["params"]["storeInfo"])
+  const model = props["route"]["params"]["storeInfo"]
+
+  //get the medicine info
+  const [mediInfo, setMediInfo] = useState(null);
+  api.getMedicine(model.fullName).then(data => {
+    data = data.map(item => {
+      return {
+        user: {
+          fullName: item.name,
+          imageUrl:
+            "https://instocknowinc.com/new/wp-content/uploads/2016/10/badge3.png",
+          about: "user about"
+        },
+        rating: 5,
+        comment: item.description
+      }
+    })
+
+    console.log("===========medicine")
+    console.log(data)
+    if (!mediInfo) {
+      setMediInfo(data)
+    }
+    // console.log(mediInfo)
+  })
+
+
+
   const route = useRoute();
   const navigation = useNavigation();
 
   const [toolbarTitleHided, setToolbarTitleHided] = useState(true);
 
-  const model = JSON.parse(route.params["model"]) as DoctorModel;
+  // const model = JSON.parse(route.params["model"]) as DoctorModel;
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const y = event.nativeEvent.contentOffset.y;
@@ -75,9 +106,9 @@ export const DoctorDetailScreen: React.FC<TProps> = props => {
       </View>
 
       <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>Rating</Text>
+        {/* <Text style={styles.sectionTitle}>Rating</Text> */}
         <Divider />
-        <View style={styles.ratingContainer}>
+        {/* <View style={styles.ratingContainer}>
           <Text style={styles.ratingNumberText}>
             {numeral(model.rating).format("0.0")}
           </Text>
@@ -89,22 +120,22 @@ export const DoctorDetailScreen: React.FC<TProps> = props => {
             selectedColor={"orange"}
             defaultRating={model.rating}
           />
-        </View>
-        <TouchableOpacity style={styles.rateButtonContainer}>
+        </View> */}
+        {/* <TouchableOpacity style={styles.rateButtonContainer}>
           <Text style={styles.rateButtonTitle}>Rate & Write Message</Text>
           <Ionicons
             name="ios-arrow-forward"
             color={Theme.colors.black}
             size={26}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       <View style={styles.sectionContainer}>
-        <Text style={styles.sectionTitle}>Reviews</Text>
+        <Text style={styles.sectionTitle}>Medicines List in this Store</Text>
         <Divider />
         <FlatList
-          data={model.reviews}
+          data={mediInfo}
           keyExtractor={(item, index) => `key${index}ForReview`}
           ItemSeparatorComponent={() => <Divider style={styles.divider} />}
           renderItem={row => <DoctorReviewItemRow item={row.item} />}

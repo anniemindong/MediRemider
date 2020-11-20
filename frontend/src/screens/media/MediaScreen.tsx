@@ -1,231 +1,135 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
-  FlatList,
-  View,
-  Text,
+  AsyncStorage,
   StyleSheet,
-  Image,
   ScrollView,
-  TouchableOpacity
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  Alert
 } from "react-native";
-import { Theme } from "../../theme";
-import { Divider } from "../../components";
-import { useLocalization } from "../../localization";
-import { StoryViewerModal } from "../../modals";
-import { storyList, mediaList } from "../../datas";
 import { useNavigation } from "@react-navigation/native";
+import {
+  UpcomingAppoinmentRow,
+  DashboardMenuItemRow,
+  Divider,
+  SectionHeader,
+  DashboardCampaignsListItem,
+  DoctorItemRow,
+  DepartmentItem,
+  TouchableHighlight
+} from "../../components";
+
+import { DashboardItemsModel } from "../../models";
+import { DashboardService } from "../../services";
+import { useLocalization } from "../../localization";
 import NavigationNames from "../../navigations/NavigationNames";
-import moment from "moment";
+import { HomeMenuItemType } from "../../types";
+// import { HeartRateScreen } from "../campaign/HeartRateScreen";
+
+const api = require('../../../utils/api');
 
 type TProps = {};
 
-const StorySection: React.FC<{
-  onClickStoryItem: (index: number) => void;
-}> = props => (
-  <>
-    <FlatList
-      data={storyList}
-      keyExtractor={(item, index) => `key${index}ForStory`}
-      renderItem={row => (
-        <TouchableOpacity
-          style={styles.storyItemContainer}
-          onPress={() => props.onClickStoryItem(row.index)}
-        >
-          <Image
-            source={{
-              uri: row.item.imageUrl
-            }}
-            style={styles.storyItemImage}
-          />
-        </TouchableOpacity>
-      )}
-      horizontal={true}
-      showsHorizontalScrollIndicator={false}
-      ItemSeparatorComponent={() => <View style={styles.horizontalDivider} />}
-      contentContainerStyle={styles.storyContentContainer}
-    />
-    <Divider />
-  </>
-);
-
 export const MediaScreen: React.FC<TProps> = props => {
+  const [storeInfo, setStoreInfo] = useState(null);
+  api.getStore().then(data => {
+    if (!storeInfo) {
+      console.log(data)
+      data = data.store.map(item => {
+        return {
+          fullName: item.name,
+          title: "Drug Store",
+          isOnline: false,
+          rating: 5,
+          imageUrl:
+            "https://img.icons8.com/dusk/344/online-store.png",
+          about: item.address,
+          reviews: []
+        }
+      })
+      setStoreInfo(data)
+    }
+    // console.log(storeInfo)
+  })
+
+
+
   const navigation = useNavigation();
+  const { getString, changeLanguage } = useLocalization();
+  const [dashboardItem, setDashboardItem] = useState<DashboardItemsModel>(null);
 
-  const [isShowedStoryModal, setIsShowedStoryModal] = useState(false);
-  const [selectedStoryIndex, setSelectedStoryIndex] = useState(0);
+  useEffect(() => {
+    DashboardService.getDashboardItems().then(item => {
+      setDashboardItem(item);
+    });
+  }, []);
 
-  const { getString } = useLocalization();
+
+  if (dashboardItem === null) {
+    return <Text>Loading</Text>;
+  }
+
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      contentContainerStyle={styles.container}
+      showsVerticalScrollIndicator={false}
+    >
+      {/* <Text >{userInfo ? userInfo.email : 'Testttttttt User'}</Text> */}
+
+
+      <SectionHeader
+        title={getString("All Stores Near You")}
+        // rightTitle={getString("See More")}
+        // rightAction={() =>
+        //   navigation.navigate(NavigationNames.DoctorListScreen)
+        // }
+      />
       <FlatList
-        data={mediaList}
-        keyExtractor={(item, index) => `key${index}ForMedia`}
-        ListHeaderComponent={() => (
-          <StorySection
-            onClickStoryItem={(index: number) => {
-              setSelectedStoryIndex(index);
-              setIsShowedStoryModal(true);
-            }}
-          />
-        )}
-        renderItem={({ item }) => (
+        // data={dashboardItem.doctors}
+        data={storeInfo}
+        keyExtractor={(item, index) => `key${index}ForDoctor`}
+        renderItem={row => (
           <TouchableOpacity
-            style={{ padding: 16 }}
+            style={styles.touchableDoctorItem}
             onPress={() =>
-              navigation.navigate(NavigationNames.MediaDetailScreen, {
-                model: JSON.stringify(item)
+              navigation.navigate(NavigationNames.DoctorDetailScreen, {
+                // model: JSON.stringify(row.item),
+                test: "==============",
+                storeInfo: row.item
               })
             }
-            activeOpacity={0.6}
           >
-            <View>
-              <Image
-                source={{
-                  uri: item.imageUrl
-                }}
-                style={styles.image}
-              />
-              <View style={styles.liveContainer}>
-                <Text style={styles.liveText}>{getString("LIVE")}</Text>
-              </View>
-
-              <View style={styles.doctorContainer}>
-                <Image
-                  source={{
-                    uri: item.doctor.imageUrl
-                  }}
-                  style={styles.doctorImage}
-                />
-                <View style={styles.doctorTextContainer}>
-                  <Text style={styles.doctorNameText}>
-                    {item.doctor.fullName}
-                  </Text>
-                  <Text style={styles.doctorTitleText}>
-                    {item.doctor.title}
-                  </Text>
-                </View>
-              </View>
-            </View>
-            <View style={styles.textRowContainer}>
-              <ScrollView
-                horizontal={true}
-                showsHorizontalScrollIndicator={false}
-              >
-                {item.tags.map((item, index) => (
-                  <View key={`key${index}ForTag`} style={styles.tagContainer}>
-                    <Text style={styles.tagText}>{item}</Text>
-                  </View>
-                ))}
-              </ScrollView>
-              <Text style={styles.titleText}>{item.title}</Text>
-              <Text style={styles.minuteText}>
-                {moment(item.startedDate)
-                  .startOf("hour")
-                  .fromNow()}
-              </Text>
-            </View>
+            <DoctorItemRow item={row.item} />
           </TouchableOpacity>
         )}
-        ItemSeparatorComponent={() => <Divider />}
-        showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => <Divider h16 />}
+        scrollEnabled={false}
       />
-      <StoryViewerModal
-        isShowed={isShowedStoryModal}
-        selectedIndex={selectedStoryIndex}
-        stories={storyList}
-        onSwipeComplete={() => setIsShowedStoryModal(false)}
-      />
-    </View>
+
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  image: {
-    height: 210,
-    borderRadius: 16,
-    borderWidth: 0.4,
-    borderColor: Theme.colors.formBackground
+  titleStyle: { alignItems: "center" },
+  container: { paddingVertical: 24 },
+  upcomingAppoinmentRow: {
+    marginHorizontal: 16
   },
-  liveContainer: {
-    position: "absolute",
-    start: 16,
-    top: 16,
-    backgroundColor: "#F93C1A",
-    paddingHorizontal: 6,
-    paddingVertical: 2,
-    borderRadius: 4
+  touchableDoctorItem: {
+    paddingStart: 16,
+    paddingEnd: 8
   },
-  textRowContainer: {
-    marginTop: 12,
-    marginHorizontal: 4
-  },
-  liveText: { color: "white", fontSize: 13 },
-  titleText: {
-    fontSize: 15,
-    color: Theme.colors.black,
-    marginTop: 8
-  },
-  minuteText: {
-    fontSize: 13,
-    fontWeight: "600",
-    color: Theme.colors.gray,
-    marginTop: 4
-  },
-  doctorContainer: {
-    flexDirection: "row",
-    marginTop: 12,
-    alignItems: "center",
-    position: "absolute",
-    bottom: 0,
-    backgroundColor: "#FFFFFFEE",
-    margin: 4,
-    start: 0,
-    paddingHorizontal: 4,
-    paddingVertical: 4,
-    borderRadius: 12
-  },
-  doctorImage: {
-    width: 28,
-    height: 28,
-    backgroundColor: Theme.colors.grayForBoxBackground,
-    borderRadius: 8
-  },
-  doctorTextContainer: { paddingHorizontal: 4 },
-  doctorNameText: {
-    fontWeight: "600",
-    fontSize: 12,
-    color: Theme.colors.black
-  },
-  doctorTitleText: {
-    fontSize: 11,
-    color: Theme.colors.black
-  },
-  tagContainer: {
-    backgroundColor: Theme.colors.grayForBoxBackground,
-    paddingVertical: 4,
-    paddingHorizontal: 6,
-    borderRadius: 4,
-    marginEnd: 8
-  },
-  tagText: {
-    fontWeight: "600",
-    fontSize: 12,
-    color: Theme.colors.black
-  },
-  horizontalDivider: { width: 12 },
-  storyContentContainer: {
+  campaignsContainer: {
     paddingHorizontal: 16,
-    paddingVertical: 16
+    paddingVertical: 12
   },
-  storyItemContainer: {
-    width: 68,
-    height: 68,
-    backgroundColor: Theme.colors.grayForBoxBackground,
-    borderRadius: 100,
-    borderWidth: 2,
-    borderColor: Theme.colors.primaryColor
+  departmentsContainer: {
+    paddingHorizontal: 16,
+    paddingVertical: 12
   },
-  storyItemImage: { flex: 1, borderRadius: 100, margin: 2 }
+  horizontalDivider: { width: 12 }
 });
