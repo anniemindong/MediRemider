@@ -63,10 +63,10 @@ const HomeTabStack = () => {
         component={DoctorListScreen}
         options={{ title: getString("Doctors") }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name={NavigationNames.DoctorDetailScreen}
         component={DoctorDetailScreen}
-      />
+      /> */}
     </Stack.Navigator>
   );
 };
@@ -85,10 +85,10 @@ const CalendarTabStack = () => {
         component={NewAppointmentScreen}
         options={{ title: getString("New Appointment") }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name={NavigationNames.DoctorDetailScreen}
         component={DoctorDetailScreen}
-      />
+      /> */}
     </Stack.Navigator>
   );
 };
@@ -103,13 +103,23 @@ const MediaTabStack = () => {
         options={{ title: getString("Medicine") }}
       />
       <Stack.Screen
+        name={NavigationNames.DoctorListScreen}
+        component={DoctorListScreen}
+        options={{ title: getString("Doctors") }}
+      />
+      <Stack.Screen
         name={NavigationNames.MediaDetailScreen}
         component={MediaDetailScreen}
         options={{ title: getString("Media") }}
       />
+      <Stack.Screen
+        name={NavigationNames.DoctorDetailScreen}
+        component={DoctorDetailScreen}
+      />
     </Stack.Navigator>
   );
 };
+
 
 const ProfileTabStack = () => {
   return (
