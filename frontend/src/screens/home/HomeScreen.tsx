@@ -11,23 +11,13 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import {
-  UpcomingAppoinmentRow,
-  DashboardMenuItemRow,
-  Divider,
   SectionHeader,
-  DashboardCampaignsListItem,
-  DoctorItemRow,
   DepartmentItem,
-  TouchableHighlight
 } from "../../components";
 
 import { Button, Dimensions } from 'react-native';
 import {
   LineChart,
-  BarChart,
-  PieChart,
-  ProgressChart,
-  ContributionGraph,
   StackedBarChart
 } from "react-native-chart-kit";
 import { DashboardItemsModel } from "../../models";
@@ -42,8 +32,9 @@ const api = require('../../../utils/api');
 type TProps = {};
 let updateInterval;
 let uploadInterval;
-
 let latest7DaysData = [75, 73, 71, 74, 78, 76, 73]
+// let latest7DaysData = [0, 0, 0, 0, 0, 0, 0]
+
 
 const LOWEST_HEART_RATE = 60
 const HIGHEST_HEART_RATE = 100
@@ -184,13 +175,13 @@ export const HomeScreen: React.FC<TProps> = props => {
             datasets: [
               {
                 data: [
-                  (heartData && heartData.user && heartData.user.monday ? heartData.user.monday : latest7DaysData[0]),
-                  (heartData && heartData.user && heartData.user.tuesday ? heartData.user.tuesday : latest7DaysData[1]),
-                  (heartData && heartData.user && heartData.user.wednesday ? heartData.user.wednesday : latest7DaysData[2]),
-                  (heartData && heartData.user && heartData.user.thursday ? heartData.user.thursday : latest7DaysData[3]),
-                  (heartData && heartData.user && heartData.user.friday ? heartData.user.friday : latest7DaysData[4]),
-                  (heartData && heartData.user && heartData.user.saturday ? heartData.user.saturday : latest7DaysData[5]),
-                  (heartData && heartData.user && heartData.user.sunday ? heartData.user.sunday : latest7DaysData[6]),
+                  (heartData && heartData.user && heartData.user.monday ? latest7DaysData[0] : latest7DaysData[0]),
+                  (heartData && heartData.user && heartData.user.tuesday ? latest7DaysData[1] : latest7DaysData[1]),
+                  (heartData && heartData.user && heartData.user.wednesday ? latest7DaysData[2] : latest7DaysData[2]),
+                  (heartData && heartData.user && heartData.user.thursday ? latest7DaysData[3] : latest7DaysData[3]),
+                  (heartData && heartData.user && heartData.user.friday ? latest7DaysData[4] : latest7DaysData[4]),
+                  (heartData && heartData.user && heartData.user.saturday ? latest7DaysData[5] : latest7DaysData[5]),
+                  (heartData && heartData.user && heartData.user.sunday ? latest7DaysData[6] : latest7DaysData[6]),
                 ]
               }
             ]
