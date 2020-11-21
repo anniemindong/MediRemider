@@ -38,37 +38,12 @@ import { HomeMenuItemType } from "../../types";
 // import { HeartRateScreen } from "../campaign/HeartRateScreen";
 
 const api = require('../../../utils/api');
-// const generateMenuItems = (
-//   getString: (key: string) => string
-// ): HomeMenuItemType[] => [
-//   {
-//     row1: getString("Book an Appoinment"),
-//     row2: getString("6 Doctors are available"),
-//     iconName: "md-alarm",
-//     iconBack: "#73CEC1",
-//     action: "BookAnAppoinment"
-//   },
-//   {
-//     row1: getString("Lab Tests at Home"),
-//     row2: getString("92 Diagnostics are available"),
-//     iconName: "ios-flask",
-//     iconBack: "#35CDF7",
-//     action: "LabTestsAtHome"
-//   },
-//   {
-//     row1: getString("Online Healt Consultant"),
-//     row2: getString("+14 Consultants"),
-//     iconName: "ios-text",
-//     iconBack: "#FA7F5D",
-//     action: "OnlineHealtConsultant"
-//   }
-// ];
 
 type TProps = {};
 let updateInterval;
 let uploadInterval;
 
-let latest7DaysData = [85, 80, 87, 88, 86, 88, 79]
+let latest7DaysData = [75, 73, 71, 74, 78, 76, 73]
 
 const LOWEST_HEART_RATE = 60
 const HIGHEST_HEART_RATE = 100
@@ -77,10 +52,7 @@ function getHeartRate() {
   let highestHeartRate = Math.min(lastHeartRate + 5, HIGHEST_HEART_RATE)
   let lowestHeartRate = Math.max(lastHeartRate - 5, LOWEST_HEART_RATE)
   let currentHeartRate = Math.random() * (highestHeartRate - lowestHeartRate) + lowestHeartRate;
-  // console.log("currentHeartRate")
-  // console.log(highestHeartRate)
-  // console.log(lowestHeartRate)
-  // console.log(currentHeartRate)
+
   lastHeartRate = currentHeartRate
   return currentHeartRate
 }
@@ -108,12 +80,9 @@ export const HomeScreen: React.FC<TProps> = props => {
     }
     email = JSON.parse(data).email;
 
-    console.log("eeeeeeeee")
-    console.log(email)
 
     if (!uploadInterval) {
       uploadInterval = setInterval(() => {
-        console.log("uploadInterval")
         api.uploadHeartRateRecord(email, getHeartRate())
       }, 3000)
     }
@@ -121,11 +90,8 @@ export const HomeScreen: React.FC<TProps> = props => {
     return api.HeartRate(email)
   }).then(data => {
 
-    console.log("updateInterval 0")
     if (!updateInterval) {
-      console.log("updateInterval 1")
       updateInterval = setInterval(async () => {
-        console.log("updateInterval 2")
         try {
           let heartRateRecords = await api.getHeartRateRecord(email, 20);
           heartRateRecords = heartRateRecords.map(item => {
@@ -147,7 +113,7 @@ export const HomeScreen: React.FC<TProps> = props => {
     }
 
 
-
+ 
 
 
     if (data) {
@@ -175,7 +141,6 @@ export const HomeScreen: React.FC<TProps> = props => {
       setDashboardItem(item);
     });
     return () => {
-      console.log("clear")
       clearInterval(updateInterval);
       clearInterval(uploadInterval);
       updateInterval = null
@@ -202,14 +167,7 @@ export const HomeScreen: React.FC<TProps> = props => {
     return <Text>Loading</Text>;
   }
 
-  // const HomeScreen = async ({ navigation }: Props) => {
 
-  // start 1
-  // let value = await AsyncStorage.getItem(key);
-
-
-  //end 1
-  //};
 
   return (
     <ScrollView
@@ -242,12 +200,13 @@ export const HomeScreen: React.FC<TProps> = props => {
           yAxisLabel=""
           yAxisSuffix=""
           yAxisInterval={1} // optional, defaults to 1
+
           chartConfig={{
             backgroundColor: "#FFFFFF",
             //#e26a00",
             backgroundGradientFrom: "#FFFFFF",
             //#fb8c00",
-            backgroundGradientTo: "#81BAB2",
+            backgroundGradientTo: "#FFFFFF",
             // #ffa726",
             decimalPlaces: 2, // optional, defaults to 2dp
             color: (opacity = 1) => `rgba(0, 89, 89, ${opacity})`,
@@ -256,7 +215,7 @@ export const HomeScreen: React.FC<TProps> = props => {
               borderRadius: 16
             },
             propsForDots: {
-              r: "6",
+              r: "3",
               strokeWidth: "2",
               // stroke: "#ffa726"
             }
@@ -283,7 +242,7 @@ export const HomeScreen: React.FC<TProps> = props => {
             //#e26a00",
             backgroundGradientFrom: "#FFFFFF",
             //#fb8c00",
-            backgroundGradientTo: "#81BAB2",
+            backgroundGradientTo: "#FFFFFF",
             // #ffa726",
             decimalPlaces: 2, // optional, defaults to 2dp
             color: (opacity = 1) => `rgba(0, 89, 89, ${opacity})`,
@@ -322,7 +281,7 @@ export const HomeScreen: React.FC<TProps> = props => {
           chartConfig={{
             backgroundColor: '#FFFFFF',
             backgroundGradientFrom: '#FFFFFF',
-            backgroundGradientTo: '#81BAB2',
+            backgroundGradientTo: '#FFFFFF',
             decimalPlaces: 2,
             color: (opacity = 1) => `rgba(0, 89, 89, ${opacity})`,
             style: {

@@ -22,14 +22,15 @@ export const DoctorReviewItemRow: React.FC<TProps> = props => {
         />
         <View style={styles.ratingContent}>
           <Text style={styles.fullNameText}>{props.item.user.fullName}</Text>
-          <AirbnbRating
+          <Text style={styles.commentText}>{props.item.user.about}</Text>
+          {/* <AirbnbRating
             showRating={false}
             count={5}
             size={12}
             isDisabled
             selectedColor={"orange"}
             defaultRating={props.item.rating}
-          />
+          /> */}
         </View>
       </View>
       <Text style={styles.commentText}>{props.item.comment}</Text>

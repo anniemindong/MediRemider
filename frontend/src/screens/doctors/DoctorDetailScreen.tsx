@@ -31,13 +31,14 @@ export const DoctorDetailScreen: React.FC<TProps> = props => {
   api.getMedicine(model.fullName).then(data => {
     data = data.map(item => {
       return {
+        
         user: {
           fullName: item.name,
           imageUrl:
-            "https://instocknowinc.com/new/wp-content/uploads/2016/10/badge3.png",
-          about: "user about"
+            "https://previews.123rf.com/images/alfazetchronicles/alfazetchronicles1708/alfazetchronicles170800271/84001498-medical-pill-cute-cartoon-character-pharmacy-treatment-icon-funny-medicine-equipment-isolated-on-whi.jpg",
+          about: item.prescription,
         },
-        rating: 5,
+        // rating: 5,
         comment: item.description
       }
     })

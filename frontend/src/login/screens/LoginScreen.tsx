@@ -17,8 +17,8 @@ type Props = {
 const api = require('../../../utils/api')
 
 const LoginScreen = ({ navigation }: Props) => {
-  const [email, setEmail] = useState({ value: 'demo@gmail.com', error: '' });
-  const [password, setPassword] = useState({ value: '123456', error: '' });
+  const [email, setEmail] = useState({ value: '', error: '' });
+  const [password, setPassword] = useState({ value: '', error: '' });
 
   const _onLoginPressed = async() => {
     const emailError = emailValidator(email.value);

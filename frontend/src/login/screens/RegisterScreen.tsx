@@ -93,6 +93,16 @@ const RegisterScreen = ({ navigation }: Props) => {
         secureTextEntry
       />
 
+      <TextInput
+        label="City"
+        returnKeyType="next"
+      />
+
+      <TextInput
+        label="Emergency Contact"
+        returnKeyType="next"
+      />  
+
       <Button
         title="Sign Up"
         onPress={_onSignUpPressed}

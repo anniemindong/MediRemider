@@ -105,7 +105,7 @@ router.post('/HeartRate', async (req, res) => {
 
 router.get('/medicine', async (req, res) => {
     const store = req.query.store
-    const medi = await Medicine.find({store})
+    const medi = await Medicine.find({store, outstock:false})
     res.status(200).send(medi)
 })
 
