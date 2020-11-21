@@ -7,6 +7,7 @@ const router = express.Router();
 const UserDetails = require('../models/UserDetails');
 //HeartRate
 const HeartRate = require('../models/HeartRate');
+const HeartRateRecord = require('../models/HeartRateRecord');
 
 const Medicine = require('../models/Medicine');
 
@@ -96,9 +97,7 @@ router.post('/HeartRate', async (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
     }
-    // console.log("-0000000-")
-    // console.log(req.body.email)
-    // check if email exist
+  
     const user = await HeartRate.findOne({ email: req.body.email })
     if (!user) return res.status(404).send({ success: false, message: "User is not registered" })
     // console.log(user)
@@ -107,8 +106,6 @@ router.post('/HeartRate', async (req, res) => {
 
 router.get('/medicine', async (req, res) => {
     const store = req.query.store
-    console.log("store")
-    console.log(store)
     const medi = await Medicine.find({store})
     res.status(200).send(medi)
 })
