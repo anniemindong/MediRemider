@@ -22,8 +22,8 @@ const api = require('../../../utils/api');
 type TProps = {};
 
 export const DoctorDetailScreen: React.FC<TProps> = props => {
-  console.log('props["route"]["params"]["storeInfo"]')
-  console.log(props["route"]["params"]["storeInfo"])
+  // console.log('props["route"]["params"]["storeInfo"]')
+  // console.log(props["route"]["params"]["storeInfo"])
   const model = props["route"]["params"]["storeInfo"]
 
   //get the medicine info
@@ -42,8 +42,8 @@ export const DoctorDetailScreen: React.FC<TProps> = props => {
       }
     })
 
-    console.log("===========medicine")
-    console.log(data)
+    // console.log("===========medicine")
+    // console.log(data)
     if (!mediInfo) {
       setMediInfo(data)
     }

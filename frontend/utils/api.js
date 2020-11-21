@@ -30,6 +30,26 @@ exports.HeartRate = async function (email) {
   return result.data
 }
 
+//Upload heart rate record 
+exports.uploadHeartRateRecord = async function (email, value) {
+  const result = await axios.post(`${BASE_URL}/api/heart_rate_record`, {
+    email,
+    value
+  })
+  return result.data
+}
+
+//Get heart rate record
+exports.getHeartRateRecord = async function (email, limit) {
+  const result = await axios.get(`${BASE_URL}/api/heart_rate_record`, {
+    params: {
+      email,
+      limit
+    }
+  })
+  return result.data
+}
+
 //Medicine
 exports.getMedicine = async function (store) {
   const result = await axios.get(`${BASE_URL}/user/medicine`, {

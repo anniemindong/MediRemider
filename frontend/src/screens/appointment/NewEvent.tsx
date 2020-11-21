@@ -67,7 +67,7 @@ export function NewAppointmentScreen({ navigation }) {
           mode="datetime"
           minimumDate={new Date()}
           onChange={(event, selectedDate) => {
-            console.log(selectedDate);
+            // console.log(selectedDate);
             const cur = selectedDate ?? date;
             setShowDate(false);
             // setShowTime(true);

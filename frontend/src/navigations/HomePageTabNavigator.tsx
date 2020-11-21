@@ -142,7 +142,7 @@ setInterval(() => {
         type: "SET_NOTIFIED",
         data: event,
       });
-      console.log(event);
+      // console.log(event);
       sendNotification({
         title: event.name,
         body: event.desc,

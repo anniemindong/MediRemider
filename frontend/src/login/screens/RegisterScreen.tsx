@@ -39,7 +39,7 @@ const RegisterScreen = ({ navigation }: Props) => {
     //start 1
     try {
       const result = await api.register(name.value, email.value, password.value)
-      console.log(result)
+      // console.log(result)
       if (result.success) {
         Alert.alert(result.message);
         navigation.navigate('LoginScreen');

@@ -6,6 +6,7 @@ const app = express();
 app.use(express.json());
 
 const authRoutes = require('./routes/auth');
+const heartRateRecord = require('./routes/heartRateRecord');
 const verifyToken = require('./routes/verifyToken');
 
 app.get('/', (req, res) => {
@@ -18,6 +19,7 @@ app.get('/user/profile', verifyToken, (req, res) => {
 })
 
 app.use('/user', authRoutes);
+app.use('/api', heartRateRecord);
 app.use('/event', require('./routes/takeMedinceTime'))
 
 mongoose.connect('mongodb+srv://king_auth:7KckJMsEXKqhV8u@cluster0.f7nsr.mongodb.net/mediReminder?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })

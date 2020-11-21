@@ -7,7 +7,6 @@ const router = express.Router();
 const UserDetails = require('../models/UserDetails');
 //HeartRate
 const HeartRate = require('../models/HeartRate');
-const HeartRateRecord = require('../models/HeartRateRecord');
 
 const Medicine = require('../models/Medicine');
 

@@ -36,7 +36,7 @@ export const MediaScreen: React.FC<TProps> = props => {
   const [storeInfo, setStoreInfo] = useState(null);
   api.getStore().then(data => {
     if (!storeInfo) {
-      console.log(data)
+      // console.log(data)
       data = data.store.map(item => {
         return {
           fullName: item.name,
