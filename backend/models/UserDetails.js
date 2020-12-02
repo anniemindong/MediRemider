@@ -4,7 +4,6 @@ const UserDetails= new mongoose.Schema({
     email:{type:String},
     password:{type:String},
     address: {type :String},
-    
-    
+    emergencyContact: {type:String}   
 });
 module.exports =mongoose.model("UserDetails",UserDetails);
