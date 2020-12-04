@@ -15,8 +15,6 @@ import {
   MenuScreen,
   CalendarScreen,
   MediaScreen,
-  // CampaignListScreen,
-  // CampaignDetailScreen,
   DepartmentListScreen,
   DepartmentDetailScreen,
   MediaDetailScreen,
@@ -40,15 +38,6 @@ const HomeTabStack = () => {
         component={HomeScreen}
         options={{ headerTitle: () => <ToolbarBrandLogo /> }}
       />
-      {/* <Stack.Screen
-        name={NavigationNames.CampaignListScreen}
-        component={CampaignListScreen}
-        options={{ title: getString("Campaigns") }}
-      /> */}
-      {/* <Stack.Screen
-        name={NavigationNames.CampaignDetailScreen}
-        component={CampaignDetailScreen}
-      /> */}
       <Stack.Screen
         name={NavigationNames.DepartmentListScreen}
         component={DepartmentListScreen}
@@ -69,10 +58,6 @@ const HomeTabStack = () => {
         component={DoctorListScreen}
         options={{ title: getString("Doctors") }}
       />
-      {/* <Stack.Screen
-        name={NavigationNames.DoctorDetailScreen}
-        component={DoctorDetailScreen}
-      /> */}
     </Stack.Navigator>
   );
 };
@@ -166,10 +151,6 @@ const CalendarTabStack = () => {
           component={NewAppointmentScreen}
           options={{ title: "New Event" }}
         />
-        {/* <Stack.Screen
-          name={NavigationNames.DoctorDetailScreen}
-          component={DoctorDetailScreen}
-        /> */}
       </Stack.Navigator>
     </Provider>
   );
