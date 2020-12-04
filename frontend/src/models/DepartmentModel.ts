@@ -9,6 +9,6 @@ export type DepartmentModel = {
   shortDescription: string;
   htmlContent: string;
   // departmentServices: DepartmentServiceModel[];
-  newsPosts: NewsPostModel[];
+  // newsPosts: NewsPostModel[];
   images: ImageModel[];
 };
