@@ -82,20 +82,15 @@ export const MediaScreen: React.FC<TProps> = props => {
 
       <SectionHeader
         title={getString("All Stores Near You")}
-        // rightTitle={getString("See More")}
-        // rightAction={() =>
-        //   navigation.navigate(NavigationNames.DoctorListScreen)
-        // }
       />
       <FlatList
-        // data={dashboardItem.doctors}
         data={storeInfo}
         keyExtractor={(item, index) => `key${index}ForDoctor`}
         renderItem={row => (
           <TouchableOpacity
             style={styles.touchableDoctorItem}
             onPress={() =>
-              navigation.navigate(NavigationNames.DoctorDetailScreen, {
+              navigation.navigate(NavigationNames.StoreDetailScreen, {
                 // model: JSON.stringify(row.item),
                 test: "==============",
                 storeInfo: row.item

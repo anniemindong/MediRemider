@@ -17,6 +17,6 @@ export default {
   CouponListScreen: "CouponListScreen",
   CouponDetailScreen: "CouponDetailScreen",
   NewAppointmentScreen: "NewAppointmentScreen",
-  DoctorListScreen: "DoctorListScreen",
-  DoctorDetailScreen: "DoctorDetailScreen"
+  StoreListScreen: "StoreListScreen",
+  StoreDetailScreen: "StoreDetailScreen"
 };

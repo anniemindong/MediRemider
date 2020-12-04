@@ -19,8 +19,8 @@ import {
   CouponDetailScreen,
   MediaDetailScreen,
   NewAppointmentScreen,
-  DoctorListScreen,
-  DoctorDetailScreen,
+  StoreListScreen,
+  StoreDetailScreen,
   EventListScreen,
 } from "../screens";
 import { ToolbarBrandLogo } from "../components";
@@ -54,8 +54,8 @@ const HomeTabStack = () => {
         options={{ title: getString("New Appointment") }}
       />
       <Stack.Screen
-        name={NavigationNames.DoctorListScreen}
-        component={DoctorListScreen}
+        name={NavigationNames.StoreListScreen}
+        component={StoreListScreen}
         options={{ title: getString("Doctors") }}
       />
     </Stack.Navigator>
@@ -166,8 +166,8 @@ const MediaTabStack = () => {
         options={{ title: getString("Medicine") }}
       />
       <Stack.Screen
-        name={NavigationNames.DoctorListScreen}
-        component={DoctorListScreen}
+        name={NavigationNames.StoreListScreen}
+        component={StoreListScreen}
         options={{ title: getString("Doctors") }}
       />
       <Stack.Screen
@@ -176,8 +176,8 @@ const MediaTabStack = () => {
         options={{ title: getString("Media") }}
       />
       <Stack.Screen
-        name={NavigationNames.DoctorDetailScreen}
-        component={DoctorDetailScreen}
+        name={NavigationNames.StoreDetailScreen}
+        component={StoreDetailScreen}
       />
     </Stack.Navigator>
   );

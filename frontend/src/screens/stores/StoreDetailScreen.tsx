@@ -21,7 +21,7 @@ const api = require('../../../utils/api');
 
 type TProps = {};
 
-export const DoctorDetailScreen: React.FC<TProps> = props => {
+export const StoreDetailScreen: React.FC<TProps> = props => {
   // console.log('props["route"]["params"]["storeInfo"]')
   // console.log(props["route"]["params"]["storeInfo"])
   const model = props["route"]["params"]["storeInfo"]

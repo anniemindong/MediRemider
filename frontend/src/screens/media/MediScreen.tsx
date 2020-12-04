@@ -84,7 +84,7 @@ export const MediScreen: React.FC<TProps> = props => {
           <TouchableOpacity
             style={styles.touchableDoctorItem}
             onPress={() =>
-              navigation.navigate(NavigationNames.DoctorDetailScreen, {
+              navigation.navigate(NavigationNames.StoreDetailScreen, {
                 // model: JSON.stringify(row.item),
                 test: "==============",
                 storeInfo: row.item

@@ -13,7 +13,7 @@ import NavigationNames from "../../navigations/NavigationNames";
 
 type TProps = {};
 
-export const DoctorListScreen: React.FC<TProps> = props => {
+export const StoreListScreen: React.FC<TProps> = props => {
   const navigation = useNavigation();
 
   return (
@@ -22,7 +22,7 @@ export const DoctorListScreen: React.FC<TProps> = props => {
       renderItem={({ item }) => (
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate(NavigationNames.DoctorDetailScreen, {
+            navigation.navigate(NavigationNames.StoreDetailScreen, {
               model: JSON.stringify(item)
             })
           }

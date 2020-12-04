@@ -53,7 +53,7 @@ export const DoctorDetailsBottomSheet: React.FC<TProps> = props => {
               <TouchableOpacity
                 style={styles.buttonContent}
                 onPress={() => {
-                  navigation.navigate(NavigationNames.DoctorDetailScreen, {
+                  navigation.navigate(NavigationNames.StoreDetailScreen, {
                     model: JSON.stringify(props.doctor)
                   });
                   props.onDismissModal();
