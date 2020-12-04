@@ -67,7 +67,7 @@ export function NewAppointmentScreen({ navigation }) {
         title="Save"
         onPress={async () => {
           const d = new Date(date);
- s
+ 
           d.setSeconds(0, 0);
 
           const payload = {
