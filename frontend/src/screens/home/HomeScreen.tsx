@@ -25,7 +25,6 @@ import { DashboardService } from "../../services";
 import { useLocalization } from "../../localization";
 import NavigationNames from "../../navigations/NavigationNames";
 import { HomeMenuItemType } from "../../types";
-// import { HeartRateScreen } from "../campaign/HeartRateScreen";
 
 const api = require('../../../utils/api');
 
@@ -111,10 +110,7 @@ export const HomeScreen: React.FC<TProps> = props => {
       if (!heartData) {
         setHeartData(data)
       }
-      // if (heartData.success) {
-      // console.log("6666666666666")
-      // console.log(heartData.user)
-      // }
+      
     }
   }).catch(error => {
     console.log(error)
@@ -138,21 +134,6 @@ export const HomeScreen: React.FC<TProps> = props => {
       uploadInterval = null
     }
   }, []);
-
-  // const onClickMenu = (item: HomeMenuItemType) => {
-  //   switch (item.action) {
-  //     case "BookAnAppoinment":
-  //       navigation.navigate(NavigationNames.HeartRateScreen);
-  //       // navigation.navigate(NavigationNames.NewAppointmentScreen);
-  //       break;
-  //     case "LabTestsAtHome":
-  //       //navigation.navigate(NavigationName);
-  //       break;
-  //     case "OnlineHealtConsultant":
-  //       //navigation.navigate(NavigationName);
-  //       break;
-  //   }
-  // };
 
   if (dashboardItem === null) {
     return <Text>Loading</Text>;
@@ -286,109 +267,8 @@ export const HomeScreen: React.FC<TProps> = props => {
           hideLegend
         />
 
-
-
-
-
-
       </View>
-      {/* <UpcomingAppoinmentRow
-        style={styles.upcomingAppoinmentRow}
-        item={dashboardItem.appointment}
-      />
-      <SectionHeader title={getString("What are you looking for?")} />
-      <FlatList
-        data={generateMenuItems(getString)}
-        keyExtractor={(item, index) => `key${index}ForMenu`}
-        renderItem={row => (
-          <TouchableHighlight onPress={() => onClickMenu(row.item)}>
-            <DashboardMenuItemRow item={row.item} />
-          </TouchableHighlight>
-        )}
-        ItemSeparatorComponent={() => <Divider h16 />}
-        scrollEnabled={false}
-      />
-      <SectionHeader
-        title={getString("New Campaigns")}
-        rightTitle={getString("See More")}
-        rightAction={() =>
-          navigation.navigate(NavigationNames.CampaignListScreen)
-        }
-      />
-      <FlatList
-        data={dashboardItem.campaigns}
-        renderItem={row => (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate(NavigationNames.HeartRateScreen, {
-              // navigation.navigate(NavigationNames.CampaignDetailScreen, {
-                model: JSON.stringify(row.item)
-              })
-            }
-          >
-            <DashboardCampaignsListItem item={row.item} />
-          </TouchableOpacity>
-        )}
-        showsHorizontalScrollIndicator={false}
-        horizontal={true}
-        ItemSeparatorComponent={() => <View style={styles.horizontalDivider} />}
-        contentContainerStyle={styles.campaignsContainer}
-        keyExtractor={(item, index) => `key${index}ForCampaign`}
-      /> */}
-      {/* <SectionHeader
-        title={getString("All Specialists")}
-        rightTitle={getString("See More")}
-        rightAction={() =>
-          navigation.navigate(NavigationNames.DoctorListScreen)
-        }
-      />
-      <FlatList
-        data={dashboardItem.doctors.slice(0, 3)}
-        keyExtractor={(item, index) => `key${index}ForDoctor`}
-        renderItem={row => (
-          <TouchableOpacity
-            style={styles.touchableDoctorItem}
-            onPress={() =>
-              navigation.navigate(NavigationNames.DoctorDetailScreen, {
-                model: JSON.stringify(row.item)
-              })
-            }
-          >
-            <DoctorItemRow item={row.item} />
-          </TouchableOpacity>
-        )}
-        ItemSeparatorComponent={() => <Divider h16 />}
-        scrollEnabled={false}
-      />
-      <SectionHeader
-        title={getString("Our Departments")}
-        rightTitle={getString("See More")}
-        rightAction={() =>
-          navigation.navigate(NavigationNames.DepartmentListScreen)
-        }
-      />
-      <FlatList
-        data={dashboardItem.departments}
-        renderItem={row => (
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate(NavigationNames.DepartmentDetailScreen, {
-                model: JSON.stringify(row.item)
-              })
-            }
-          >
-            <DepartmentItem item={row.item} style={{ minWidth: 130 }} />
-          </TouchableOpacity>
-        )}
-        showsHorizontalScrollIndicator={false}
-        horizontal={true}
-        ItemSeparatorComponent={() => <View style={styles.horizontalDivider} />}
-        keyExtractor={(item, index) => `key${index}ForDepartment`}
-        contentContainerStyle={styles.departmentsContainer}
-      />
-    </ScrollView>
-  );
-}; */}
+   
       <SectionHeader
         title={getString("Medicine Savings")}
         rightTitle={getString("See More")}
