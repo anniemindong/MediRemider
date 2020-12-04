@@ -15,8 +15,8 @@ import {
   MenuScreen,
   CalendarScreen,
   MediaScreen,
-  CampaignListScreen,
-  CampaignDetailScreen,
+  // CampaignListScreen,
+  // CampaignDetailScreen,
   DepartmentListScreen,
   DepartmentDetailScreen,
   MediaDetailScreen,
@@ -40,15 +40,15 @@ const HomeTabStack = () => {
         component={HomeScreen}
         options={{ headerTitle: () => <ToolbarBrandLogo /> }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name={NavigationNames.CampaignListScreen}
         component={CampaignListScreen}
         options={{ title: getString("Campaigns") }}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name={NavigationNames.CampaignDetailScreen}
         component={CampaignDetailScreen}
-      />
+      /> */}
       <Stack.Screen
         name={NavigationNames.DepartmentListScreen}
         component={DepartmentListScreen}

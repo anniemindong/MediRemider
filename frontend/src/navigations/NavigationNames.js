@@ -14,8 +14,6 @@ export default {
   MenuScreen: "MenuScreen",
   ProfileScreen: "ProfileScreen",
   EventListScreen: "EventListScreen",
-  CampaignListScreen: "CampaignListScreen",
-  CampaignDetailScreen: "CampaignDetailScreen",
   DepartmentListScreen: "DepartmentListScreen",
   DepartmentDetailScreen: "DepartmentDetailScreen",
   NewAppointmentScreen: "NewAppointmentScreen",
