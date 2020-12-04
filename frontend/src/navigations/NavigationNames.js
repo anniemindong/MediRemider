@@ -9,8 +9,8 @@ export default {
 
   // Screens
   CalendarScreen: "CalendarScreen",
-  MediaScreen: "MediaScreen",
-  MediaDetailScreen: "MediaDetailScreen",
+  MediScreen: "MediScreen",
+  MediDetailScreen: "MediDetailScreen",
   MenuScreen: "MenuScreen",
   ProfileScreen: "ProfileScreen",
   EventListScreen: "EventListScreen",

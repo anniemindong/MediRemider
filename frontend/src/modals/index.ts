@@ -1,4 +1,4 @@
-export * from "./DoctorDetailsBottomSheet";
+export * from "./StoreDetailsBottomSheet";
 export * from "./SettingsBottomSheet";
 export * from "./PhotoViewerModal";
 export * from "./StoryViewerModal";

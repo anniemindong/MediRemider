@@ -11,7 +11,7 @@ import { Avatar } from "../avatar";
 import { Theme } from "../../theme";
 import { AirbnbRating } from "react-native-ratings";
 import { Ionicons } from "@expo/vector-icons";
-import { DoctorDetailsBottomSheet } from "../../modals";
+import { StoreDetailsBottomSheet } from "../../modals";
 
 type TProps = {
   item: any;
@@ -55,7 +55,7 @@ export const DoctorItemRow: React.FC<TProps> = props => {
           />
         </TouchableOpacity>
       </View>
-      <DoctorDetailsBottomSheet
+      <StoreDetailsBottomSheet
         doctor={props.item}
         isVisible={visibleModal}
         onDismissModal={() => setVisibleModal(false)}

@@ -14,10 +14,10 @@ import {
   ProfileScreen,
   MenuScreen,
   CalendarScreen,
-  MediaScreen,
+  MediScreen,
   CouponListScreen,
   CouponDetailScreen,
-  MediaDetailScreen,
+  MediDetailScreen,
   NewAppointmentScreen,
   StoreListScreen,
   StoreDetailScreen,
@@ -161,8 +161,8 @@ const MediaTabStack = () => {
   return (
     <Stack.Navigator headerMode="screen" screenOptions={stackScreenOptions}>
       <Stack.Screen
-        name={NavigationNames.MediaScreen}
-        component={MediaScreen}
+        name={NavigationNames.MediScreen}
+        component={MediScreen}
         options={{ title: getString("Medicine") }}
       />
       <Stack.Screen
@@ -171,8 +171,8 @@ const MediaTabStack = () => {
         options={{ title: getString("Doctors") }}
       />
       <Stack.Screen
-        name={NavigationNames.MediaDetailScreen}
-        component={MediaDetailScreen}
+        name={NavigationNames.MediDetailScreen}
+        component={MediDetailScreen}
         options={{ title: getString("Media") }}
       />
       <Stack.Screen

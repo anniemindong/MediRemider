@@ -26,7 +26,7 @@ type TProps = {
   onDismissModal: () => void;
 };
 
-export const DoctorDetailsBottomSheet: React.FC<TProps> = props => {
+export const StoreDetailsBottomSheet: React.FC<TProps> = props => {
   const { getString } = useLocalization();
   const navigation = useNavigation();
 

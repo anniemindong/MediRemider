@@ -16,7 +16,7 @@ import { Divider, HtmlView } from "../../components";
 
 type TProps = {};
 
-export const MediaDetailScreen: React.FC<TProps> = props => {
+export const MediDetailScreen: React.FC<TProps> = props => {
   const { getString } = useLocalization();
   const route = useRoute();
   const navigation = useNavigation();
