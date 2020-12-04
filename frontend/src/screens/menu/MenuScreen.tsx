@@ -5,7 +5,6 @@ import { Divider, TouchableHighlight } from "../../components";
 import { Theme } from "../../theme";
 import { useLocalization } from "../../localization";
 import { SettingsBottomSheet } from "../../modals";
-import NavigationNames from "../../navigations/NavigationNames";
 import { useNavigation } from "@react-navigation/native";
 
 const getMenuItems = (getString: (key: string) => string) => [

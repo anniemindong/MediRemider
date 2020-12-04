@@ -1,8 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, ViewStyle } from "react-native";
 import { Avatar } from "../avatar";
-import { ReviewModel } from "../../models";
-import { AirbnbRating } from "react-native-ratings";
 import { Theme } from "../../theme";
 
 type TProps = {
@@ -23,14 +21,6 @@ export const DoctorReviewItemRow: React.FC<TProps> = props => {
         <View style={styles.ratingContent}>
           <Text style={styles.fullNameText}>{props.item.user.fullName}</Text>
           <Text style={styles.commentText}>{props.item.user.about}</Text>
-          {/* <AirbnbRating
-            showRating={false}
-            count={5}
-            size={12}
-            isDisabled
-            selectedColor={"orange"}
-            defaultRating={props.item.rating}
-          /> */}
         </View>
       </View>
       <Text style={styles.commentText}>{props.item.comment}</Text>

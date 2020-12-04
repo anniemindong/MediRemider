@@ -5,7 +5,7 @@ import { DepartmentModel } from "./DepartmentModel";
 
 export type DashboardItemsModel = {
   appointment: AppointmentModel;
-  campaigns: CampaignModel[];
-  doctors: DoctorModel[];
+  // campaigns: CampaignModel[];
+  // doctors: DoctorModel[];
   departments: DepartmentModel[];
 };

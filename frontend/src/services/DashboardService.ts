@@ -1,5 +1,5 @@
 import { DashboardItemsModel, AppointmentModel } from "../models";
-import { doctorsList, campaignList, departmentList } from "../datas";
+import {departmentList } from "../datas";
 import moment from "moment";
 
 export const globalAppointmentDate = moment(new Date())
@@ -9,19 +9,19 @@ export const globalAppointmentDate = moment(new Date())
   .toDate();
 
 export const globalAppointment: AppointmentModel = {
-  title: "Upcoming appoinment",
+  title: ".t",
   doctor: {
-    fullName: "Dr. Busra Tekin",
-    about: "About",
-    title: "Doctor",
+    fullName: ".",
+    about: ".",
+    title: ".",
     imageUrl:
-      "https://raw.githubusercontent.com/publsoft/publsoft.github.io/master/projects/dentist-demo/assets/images/profile_photo.png",
+      ".",
     isOnline: true,
     rating: 5,
     reviews: []
   },
   appointmentDate: globalAppointmentDate,
-  locationName: "Central Hospital"
+  locationName: "."
 };
 
 export default class DashboardService {
@@ -30,8 +30,6 @@ export default class DashboardService {
       setTimeout(() => {
         const model: DashboardItemsModel = {
           appointment: globalAppointment,
-          campaigns: campaignList,
-          doctors: doctorsList,
           departments: departmentList
         };
         resolve(model);
