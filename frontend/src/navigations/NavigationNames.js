@@ -14,8 +14,8 @@ export default {
   MenuScreen: "MenuScreen",
   ProfileScreen: "ProfileScreen",
   EventListScreen: "EventListScreen",
-  DepartmentListScreen: "DepartmentListScreen",
-  DepartmentDetailScreen: "DepartmentDetailScreen",
+  CouponListScreen: "CouponListScreen",
+  CouponDetailScreen: "CouponDetailScreen",
   NewAppointmentScreen: "NewAppointmentScreen",
   DoctorListScreen: "DoctorListScreen",
   DoctorDetailScreen: "DoctorDetailScreen"

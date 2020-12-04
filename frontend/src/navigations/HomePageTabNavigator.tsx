@@ -15,8 +15,8 @@ import {
   MenuScreen,
   CalendarScreen,
   MediaScreen,
-  DepartmentListScreen,
-  DepartmentDetailScreen,
+  CouponListScreen,
+  CouponDetailScreen,
   MediaDetailScreen,
   NewAppointmentScreen,
   DoctorListScreen,
@@ -39,14 +39,14 @@ const HomeTabStack = () => {
         options={{ headerTitle: () => <ToolbarBrandLogo /> }}
       />
       <Stack.Screen
-        name={NavigationNames.DepartmentListScreen}
-        component={DepartmentListScreen}
+        name={NavigationNames.CouponListScreen}
+        component={CouponListScreen}
        // options={{ title: getString("Our Departments") }}
         options={{ title: getString("Medicine Savings") }}
       />
       <Stack.Screen
-        name={NavigationNames.DepartmentDetailScreen}
-        component={DepartmentDetailScreen}
+        name={NavigationNames.CouponDetailScreen}
+        component={CouponDetailScreen}
       />
       <Stack.Screen
         name={NavigationNames.NewAppointmentScreen}

@@ -24,7 +24,7 @@ import { PhotoViewerModal } from "../../modals";
 
 type TProps = {};
 
-export const DepartmentDetailScreen: React.FC<TProps> = props => {
+export const CouponDetailScreen: React.FC<TProps> = props => {
   // States
   const [photoViewerConfig, setPhotoViewerConfig] = useState({
     selectedPhotoIndex: 0,

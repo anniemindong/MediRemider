@@ -15,7 +15,7 @@ const SCREEN_WIDTH = Dimensions.get("screen").width;
 
 type TProps = {};
 
-export const DepartmentListScreen: React.FC<TProps> = props => {
+export const CouponListScreen: React.FC<TProps> = props => {
   const navigation = useNavigation();
   return (
     <FlatList
@@ -24,7 +24,7 @@ export const DepartmentListScreen: React.FC<TProps> = props => {
       renderItem={row => (
         <TouchableOpacity
           onPress={() =>
-            navigation.navigate(NavigationNames.DepartmentDetailScreen, {
+            navigation.navigate(NavigationNames.CouponDetailScreen, {
               model: JSON.stringify(row.item)
             })
           }

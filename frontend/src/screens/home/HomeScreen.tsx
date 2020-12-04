@@ -273,7 +273,7 @@ export const HomeScreen: React.FC<TProps> = props => {
         title={getString("Medicine Savings")}
         rightTitle={getString("See More")}
         rightAction={() =>
-          navigation.navigate(NavigationNames.DepartmentListScreen)
+          navigation.navigate(NavigationNames.CouponListScreen)
         }
       />
       <FlatList
@@ -281,7 +281,7 @@ export const HomeScreen: React.FC<TProps> = props => {
         renderItem={row => (
           <TouchableOpacity
             onPress={() =>
-              navigation.navigate(NavigationNames.DepartmentDetailScreen, {
+              navigation.navigate(NavigationNames.CouponDetailScreen, {
                 model: JSON.stringify(row.item)
               })
             }

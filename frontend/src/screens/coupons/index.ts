@@ -1,2 +1,2 @@
-export * from "./DepartmentListScreen";
-export * from "./DepartmentDetailScreen";
+export * from "./CouponListScreen";
+export * from "./CouponDetailScreen";
