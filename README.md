@@ -24,6 +24,6 @@ expo start
 ```
 
 #### after expo start
-1. 如果想从手机打开，去apple store下载最新的expo，下载完之后相机扫描二维码
-2. 如果想用电脑simulator打开，点击run on iOS simulator 
+1. To open at phone，go to apple store and download expo. After that, scan the QR code inorder to open at app.
+2. To open with simulator，click "run on iOS simulator". 
 
