@@ -14,7 +14,8 @@ cd frontend/
 #### If Expo was NOT install before:
 ```
 npm install --global expo-cli
-或者 sudo npm install --global expo-cli 
+Or:
+sudo npm install --global expo-cli 
 ```
 ```
 npm install
